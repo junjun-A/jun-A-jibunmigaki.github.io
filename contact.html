@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>お問い合わせ｜自分磨き恋愛ラボ：レンチカ+</title>
+  <meta name="description" content="自分磨き恋愛ラボ：レンチカ+へのお問い合わせページです。" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">R+</span>
+        <span class="logo-text">自分磨き恋愛ラボ：レンチカ+</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#services">サービス内容</a>
+        <a href="index.html#faq">よくある質問</a>
+        <a href="media.html">メディア</a>
+        <a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <div class="container narrow">
+      <p class="section-label">Contact</p>
+      <h1>お問い合わせ</h1>
+      <p>
+        恋愛相談、サービス内容、面談前の確認など、お気軽にお問い合わせください。  
+        内容を確認後、担当者よりご返信いたします。
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section contact-section">
+    <div class="container narrow">
+      <div class="contact-card">
+        <h2>お問い合わせフォーム</h2>
+        <p class="contact-note">
+          下記項目をご入力のうえ、「メールを作成する」ボタンを押してください。  
+          メールアプリが開き、入力内容が本文に反映されます。
+        </p>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">お名前 <span>必須</span></label>
+            <input type="text" id="name" name="name" placeholder="例：山田 太郎" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス <span>必須</span></label>
+            <input type="email" id="email" name="email" placeholder="例：sample@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tel">電話番号</label>
+            <input type="tel" id="tel" name="tel" placeholder="例：090-1234-5678" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">メッセージ内容 <span>必須</span></label>
+            <textarea id="message" name="message" rows="8" placeholder="お問い合わせ内容をご入力ください。" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary contact-submit">
+            メールを作成する
+          </button>
+        </form>
+
+        <div class="direct-mail">
+          <p>メールアプリが開かない場合は、下記アドレス宛に直接ご連絡ください。</p>
+          <a href="mailto:renailab119@gmail.com">renailab119@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Line CTA -->
+  <section class="final-cta contact-line-cta">
+    <div class="container narrow">
+      <h2>公式LINEからも相談できます</h2>
+      <p>
+        恋愛相談や無料診断をご希望の方は、公式LINEから「相談」と送ってください。
+      </p>
+      <a class="btn btn-primary" href="https://lin.ee/u928Gog" target="_blank" rel="noopener">
+        公式LINEで相談する
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 自分磨き恋愛ラボ：レンチカ+</p>
+      <div class="footer-links">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="law.html">特定商取引法に基づく表記</a>
+        <a href="contact.html">お問い合わせ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const contactForm = document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const tel = document.getElementById("tel").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !message) {
+        alert("お名前、メールアドレス、メッセージ内容を入力してください。");
+        return;
+      }
+
+      const to = "renailab119@gmail.com";
+      const subject = "【レンチカ+】お問い合わせ";
+      const body =
+`自分磨き恋愛ラボ：レンチカ+ ご担当者様
+
+以下の内容でお問い合わせいたします。
+
+【お名前】
+${name}
+
+【メールアドレス】
+${email}
+
+【電話番号】
+${tel || "未入力"}
+
+【メッセージ内容】
+${message}
+
+--------------------------------
+このメールはお問い合わせフォームから作成されました。`;
+
+      const mailtoLink =
+        `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+    });
+  </script>
+</body>
+</html>
